@@ -91,43 +91,28 @@ fast;
 ll t;
 cin>>t;
 while(t--){
-ll n;
-cin>>n;
-ll a[n];
-for(ll i=0;i<n;i++){
-    cin>>a[i];
-}
-sort(a,a+n);
-ll mid;
-if(n%2==0){
-    mid=n/2;
-}
-else{
-     mid=(n+1)/2;
-}
-ll sm=0,lg=0;
-for(ll i=0;i<n;i++){
-    if(a[i]>=a[mid]){
-        lg++;
+ ll n;
+    cin >> n;
+    set<ll> s;
+    for(ll i = 2; i*i <= n; i++){
+        if(n%i == 0){
+            s.insert(i);
+            n /= i;
+            if(s.size() == 2)
+                break;
+        }
     }
-    else{
-        sm++;
+    s.insert(n);
+    if(s.size() == 3){
+        yes;
+        for(auto x: s){
+            cout << x << " ";
+        }
+        cout << endl;
+    }else{
+        no;
     }
-}
-// cout<<lg<<" "<<sm<<endl;
-if(lg!=sm || isOdd(n)){
-    no;
-}
-else{
-    yes;
-    ll l=0,r=n-1;
-    while(l<r){
-        cout<<a[l]<<" "<<a[r]<<" ";
-        l++;
-        r--;
-    }
-    cout<<endl;
-}
+
     
 }
 get_out;

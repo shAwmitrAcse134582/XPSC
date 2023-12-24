@@ -88,47 +88,22 @@ ll digitSum(ll n)
 int main()
 {
 fast;
-ll t;
-cin>>t;
-while(t--){
-ll n;
-cin>>n;
+ll n,x;
+cin>>n>>x;
 ll a[n];
+ll sum=0;
 for(ll i=0;i<n;i++){
     cin>>a[i];
 }
 sort(a,a+n);
-ll mid;
-if(n%2==0){
-    mid=n/2;
-}
-else{
-     mid=(n+1)/2;
-}
-ll sm=0,lg=0;
+ll cnt=0;
 for(ll i=0;i<n;i++){
-    if(a[i]>=a[mid]){
-        lg++;
+    if(sum<=x){
+        sum+=a[i];
+        cnt++;
+
     }
-    else{
-        sm++;
-    }
 }
-// cout<<lg<<" "<<sm<<endl;
-if(lg!=sm || isOdd(n)){
-    no;
-}
-else{
-    yes;
-    ll l=0,r=n-1;
-    while(l<r){
-        cout<<a[l]<<" "<<a[r]<<" ";
-        l++;
-        r--;
-    }
-    cout<<endl;
-}
-    
-}
+cout<<cnt<<endl;
 get_out;
 }
